@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Yash ❤️ Siddhi</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ min-height:100vh;
+ overflow:hidden;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ background:
+ radial-gradient(circle at 50% 45%,#42001f 0%,#10000b 35%,#020002 75%);
+ color:white;
+ font-family:Arial,sans-serif;
+}
+
+.particles{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+}
+
+.p{
+ position:absolute;
+ width:4px;
+ height:4px;
+ background:#ff2b83;
+ border-radius:50%;
+ box-shadow:0 0 12px #ff2b83;
+ animation:float 5s linear infinite;
+}
+
+@keyframes float{
+ from{transform:translateY(110vh);opacity:0}
+ 20%{opacity:1}
+ to{transform:translateY(-10vh);opacity:0}
+}
+
+.container{
+ width:94%;
+ max-width:520px;
+ text-align:center;
+ position:relative;
+ z-index:2;
+}
+
+.name{
+ font-size:clamp(55px,15vw,90px);
+ font-weight:900;
+ letter-spacing:3px;
+ color:#ff3d91;
+ text-shadow:
+ 0 0 8px #ff3d91,
+ 0 0 25px #ff0066,
+ 0 0 60px #ff0066;
+ animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+ from{filter:brightness(.9)}
+ to{filter:brightness(1.5)}
+}
+
+.loves{
+ margin:2px 0 5px;
+ font-size:25px;
+ letter-spacing:6px;
+ color:#ffd5e7;
+ text-shadow:0 0 15px #ff2b83;
+}
+
+.heart-wrap{
+ width:250px;
+ height:230px;
+ margin:10px auto;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:relative;
+}
+
+.heart{
+ width:145px;
+ height:145px;
+ background:linear-gradient(135deg,#ff0b68,#ff5aa1);
+ transform:rotate(-45deg);
+ border-radius:18px;
+ box-shadow:
+ 0 0 20px #ff0b68,
+ 0 0 50px #ff0b68,
+ 0 0 100px #ff0066;
+ animation:heartbeat 1.1s infinite;
+}
+
+.heart:before,
+.heart:after{
+ content:"";
+ position:absolute;
+ width:145px;
+ height:145px;
+ border-radius:50%;
+ background:inherit;
+}
+
+.heart:before{top:-72px;left:0}
+.heart:after{left:72px;top:0}
+
+@keyframes heartbeat{
+ 0%,100%{transform:rotate(-45deg) scale(1)}
+ 50%{transform:rotate(-45deg) scale(1.13)}
+}
+
+.infinity{
+ position:absolute;
+ z-index:5;
+ font-size:65px;
+ color:white;
+ text-shadow:0 0 15px white,0 0 30px #ff2b83;
+}
+
+.card{
+ padding:20px 12px;
+ border:1px solid #ff2b83;
+ border-radius:25px;
+ background:rgba(20,0,12,.65);
+ box-shadow:
+ 0 0 15px #ff2b83,
+ inset 0 0 20px rgba(255,0,102,.15);
+}
+
+#days{
+ font-size:30px;
+ font-weight:bold;
+ color:#ff5a9f;
+ text-shadow:0 0 15px #ff176f;
+}
+
+.since{
+ margin-top:10px;
+ color:#ffc2da;
+ font-size:17px;
+}
+
+.forever{
+ margin-top:18px;
+ font-size:22px;
+ color:#ff7db1;
+ text-shadow:0 0 15px #ff176f;
+}
+</style>
+</head>
+
+<body>
+
+<div class="particles" id="particles"></div>
+
+<div class="container">
+
+<div class="name">Yash</div>
+
+<div class="loves">♡ LOVES ♡</div>
+
+<div class="name">Siddhi</div>
+
+<div class="heart-wrap">
+ <div class="heart"></div>
+ <div class="infinity">∞</div>
+</div>
+
+<div class="card">
+ <div id="days">TOGETHER FOR ... DAYS</div>
+ <div class="since">Since 22 March 2024 ♥</div>
+</div>
+
+<div class="forever">Forever &amp; Always ∞</div>
+
+</div>
+
+<script>
+const particles=document.getElementById("particles");
+
+for(let i=0;i<70;i++){
+ let p=document.createElement("div");
+ p.className="p";
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDelay=Math.random()*5+"s";
+ p.style.animationDuration=(3+Math.random()*5)+"s";
+ particles.appendChild(p);
+}
+
+function update(){
+ const start=new Date("2024-03-22T00:00:00");
+ const now=new Date();
+ const days=Math.floor((now-start)/86400000);
+ document.getElementById("days").innerText=
+ "TOGETHER FOR "+days+" DAYS";
+}
+
+update();
+setInterval(update,60000);
+</script>
+
+</body>
+</html>
